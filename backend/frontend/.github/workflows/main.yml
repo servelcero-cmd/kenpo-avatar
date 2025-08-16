@@ -1,0 +1,40 @@
+# Nombre del flujo de trabajo de automatización
+name: Deploy Kenpo Avatar Application
+
+# Define el evento que activa este flujo de trabajo
+on:
+  # Se ejecuta cada vez que se actualiza la rama principal
+  push:
+    branches: [ "main" ]
+
+# Define los trabajos a realizar
+jobs:
+  build-and-deploy:
+    # Define el tipo de máquina virtual para ejecutar el trabajo
+    runs-on: ubuntu-latest
+
+    # Define la secuencia de pasos
+    steps:
+      # Paso 1: Descargar el código del repositorio en la máquina virtual
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Paso 2: Configurar el entorno de programación (ej. Python)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Paso 3: Instalar las dependencias del software
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Aquí se instalarían las librerías necesarias como Flask, etc.
+          pip install flask
+
+      # Paso 4: (Conceptual) Desplegar la aplicación en la nube
+      # Este paso sería reemplazado por los comandos del proveedor de nube (Google Cloud, AWS, Vercel)
+      - name: Deploy to Cloud
+        run: |
+          echo "Simulating deployment..."
+          echo "Application is ready to be deployed!"

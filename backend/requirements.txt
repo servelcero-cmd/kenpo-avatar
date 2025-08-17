@@ -1,0 +1,8 @@
+# Framework principal del Backend
+django
+
+# Framework para crear la API
+djangorestframework
+
+# Servidor de producción para la aplicación
+gunicorn

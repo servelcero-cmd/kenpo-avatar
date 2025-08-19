@@ -1,8 +1,16 @@
-from django.urls import path
-from .views import process_video_view
+"""
+URL configuration for kenpo_avatar project.
+"""
+from django.contrib import admin
+# Asegúrese de que 'include' esté importado aquí
+from django.urls import path, include
 
-# Este es el mapa de rutas específico para nuestra API
+# Este es el mapa principal de URLs de la aplicación.
 urlpatterns = [
-    # Cuando se acceda a la URL 'process-video/', se ejecutará la lógica de la vista 'process_video_view'
-    path('process-video/', process_video_view, name='process-video'),
+    # Ruta para el panel de administración de Django
+    path('admin/', admin.site.urls),
+
+    # ¡LÍNEA ACTUALIZADA! Conecta las URLs de nuestra API al proyecto principal.
+    # Ahora, todas las URLs de la API comenzarán con 'api/v1/'
+    path('api/v1/', include('api.urls')),
 ]
